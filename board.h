@@ -6,6 +6,7 @@ class board{
         board(std::vector<int> grid_in) : grid(grid_in) {}
         
         int get_n() const;
+        int at(int column_num) const;
         std::vector<int> get_grid() const;
     private:
         const std::vector<int> grid;
