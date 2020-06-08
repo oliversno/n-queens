@@ -6,9 +6,13 @@
 
 class chromosone{
     public:
+        chromosone(Board board_in) : board(board_in) {}
 
+        void calculateFitness();
+        void Mutate();
+        void crossover(chromosone& other);
     private:
-        const Board board;
+        Board board;
         int fitness;
         int selection_point;
 }
