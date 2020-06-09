@@ -5,15 +5,16 @@
 #include <algorithm>
 
 void chromosone::calculateFitness(){
-    fitness = 0;
+    const int n = board.get_n();
+    fitness = nCk(n, 2); //find number of pairs with nC2
     const int length = board.get_n();
     for(int i = 0; i < length; ++i){
         for(int j = i+1; i < length - 1; ++j){
             if(board.at(i) == board.at(j)){
-                ++fitness;
+                --fitness; //subtract for attacking pair
             }
             else if (abs(board.at(i) - board.at(j)) == abs(i-j)){
-                ++fitness;
+                --fitness;
             }
         }
     }
@@ -23,7 +24,7 @@ void chromosone::Mutate(){
     // seed rng
     std::random_device rd;
     std::mt19937 gen(rd());
-    std::uniform_int_distribution<> distrib(1, n);
+    std::uniform_int_distribution<int> distrib(1, n);
     int randOne = distrib(gen);
     int randTwo = distrib(gen);
     while(randOne == randTwo){
@@ -43,4 +44,18 @@ void chromosone::crossover(chromosone& other){
     }
     calculateFitness();
     other.calculateFitness();
+}
+
+//helpers
+int nCk(int n, int k){
+    if(k==0){ return 1; }
+    if(k > n / 2) { 
+        return nCk(n, n-k);
+    }
+    long res = 1;
+    for(int i = 1; i <= k; ++i){
+        res *= n - i + 1;
+        res /= i;
+    }
+    return res;
 }
