@@ -13,8 +13,7 @@ class chromosone{
         void crossover(chromosone& other);
     private:
         Board board;
-        int fitness;
-        int selection_point;
+        int fitness; // number of non attacking pairs
 }
 
 #endif
