@@ -2,7 +2,7 @@
 #include <random>
 #include <algorithm>
 
-template <typename N>
+template <int N>
 board<N>::board(){
     std::random_device rd;
     std::mt19937 gen(rd());
@@ -13,12 +13,12 @@ board<N>::board(){
     std::generate(grid.begin(), grid.end(), gen);
 }
 
-template <typename N>
+template <int N>
 int board<N>::get_n() const{
     return N;
 }
 
-template <typename N>
+template <int N>
 int board<N>::at(int column_num) const{
     if(column_num < 0 || column_num >= grid.size()){
         throw outOfBoundsException();
@@ -26,7 +26,7 @@ int board<N>::at(int column_num) const{
     return grid[column_num];
 }
 
-template <typename N>
+template <int N>
 std::vector<int> board<N>::get_grid() const{
     return grid;
 }

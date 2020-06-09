@@ -1,7 +1,7 @@
 #ifndef BOARD_H
 #define BOARD_H
 #include<vector>
-template <typename N>
+template <int N>
 class board{
     public:
         board(std::vector<int> grid_in) : grid(grid_in) {}
