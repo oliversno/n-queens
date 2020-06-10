@@ -4,9 +4,9 @@
 #include <time.h>
 #include <algorithm>
 
-void chromosone::calculateFitness(){
+int chromosone::calculateFitness() const{
     const int n = board.get_n();
-    fitness = nCk(n, 2); //find number of pairs with nC2
+    int fitness = nCk(n, 2); //find number of pairs with nC2
     const int length = board.get_n();
     for(int i = 0; i < length; ++i){
         for(int j = i+1; i < length - 1; ++j){
@@ -18,6 +18,7 @@ void chromosone::calculateFitness(){
             }
         }
     }
+    return fitness;
 }
 void chromosone::Mutate(){
     const int n = board.get_n();
@@ -31,7 +32,6 @@ void chromosone::Mutate(){
         randTwo = distrib(gen); // ensure two distinct numbers
     }
     std::swap(board.at(randOne), board.at(randTwo));
-    calculateFitness();
 }
 void chromosone::crossover(chromosone& other){
     if(board.get_n() != other.board.get_n()){
@@ -45,8 +45,6 @@ void chromosone::crossover(chromosone& other){
     for(int i = 0; i < slicePoint; ++i){
         std::swap(board.at(i), other.board.at(i));
     }
-    calculateFitness();
-    other.calculateFitness();
 }
 
 //helpers
