@@ -41,5 +41,7 @@ int main(int argc, char** argv){
     for_each(chromosones.begin(), chromosones.end(), [](chromosone& c){
         c.calculateFitness(); 
     });
-    genetic_algorithm(chromosones);
+    for(int i = 0; i < num_rounds; ++i){
+        genetic_algorithm(chromosones);
+    }
 }
