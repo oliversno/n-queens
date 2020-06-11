@@ -1,4 +1,4 @@
-#include "board.h"
+#include "include/board.h"
 #include <random>
 #include <algorithm>
 

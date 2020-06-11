@@ -1,4 +1,4 @@
-#include "chromosone.h"
+#include "include/chromosone.h"
 #include <cmath>
 #include <random>
 #include <time.h>
