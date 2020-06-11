@@ -30,8 +30,12 @@ if(BUILD_TESTS)
     
     enable_testing()
 
-    add_executable(test_skiplist tests/skip_list_tests.cpp include/skip_list.h)
-    target_link_libraries(test_skiplist gtest gtest_main)
+    add_executable(test_board tests/board_tests.cpp include/board.h)
+    target_link_libraries(test_board gtest gtest_main)
 
-    add_test(TestSkipList test_skiplist)
+    add_executable(test_chromosone tests/chromosone_tests.cpp  include/chromsone.h include/board.h)
+    target_link_libraries(test_chromosone gtest gtest_main)
+
+    add_test(TestBoard test_board)
+    add_test(TestChromosone test_chromosone)
 endif()
