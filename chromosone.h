@@ -9,6 +9,11 @@ class chromosone{
         int calculateFitness() const;
         void Mutate();
         void crossover(chromosone& other);
+        const Board get_board() const;
+
+        friend std::ostream &operator<<( std::ostream &output, const chromosone &C ){
+            output << C.get_board();
+        }
     private:
         Board board;
 }

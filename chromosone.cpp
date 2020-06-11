@@ -47,6 +47,10 @@ void chromosone::crossover(chromosone& other){
     }
 }
 
+const Board chromosone::get_board() const{
+    return board;
+}
+
 //helpers
 int nCk(int n, int k){
     if(k==0){ return 1; }

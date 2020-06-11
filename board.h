@@ -3,10 +3,10 @@
 #include<vector>
 #include <iostream>
 
-class board{
+class Board{
     public:
-        board(std::vector<int> grid_in) : grid(grid_in) {}
-        board(int n);
+        Board(std::vector<int> grid_in) : grid(grid_in) {}
+        Board(int n);
         int get_n() const;
         int at(int column_num) const;
 
@@ -25,7 +25,7 @@ class board{
             }
             return output;
         }
-        
+
     private:
         std::vector<int> grid;
 
