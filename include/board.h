@@ -10,7 +10,7 @@ class Board{
         int get_n() const;
         int at(int column_num) const;
 
-        friend std::ostream &operator<<( std::ostream &output, const board &B ){
+        friend std::ostream &operator<<( std::ostream &output, const Board &B ){
             const int n = B.get_n();
             for(int column_num : B.grid){
                 for(int i = 0; i < n; ++i){
@@ -29,6 +29,13 @@ class Board{
     private:
         std::vector<int> grid;
 
+};
+
+
+struct outOfBoundsException : public std::exception {
+    const char* what() const throw(){
+        return "Column was not a valid acsess";
+    }
 };
 
 #endif

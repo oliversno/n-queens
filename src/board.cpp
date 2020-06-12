@@ -6,11 +6,11 @@ Board::Board(int n){
     std::random_device rd;
     std::mt19937 gen(rd());
     std::uniform_int_distribution<int> distrib(1, n);
-    auto gen = [&distrib, &gen](){
+    auto generator = [&distrib, &gen](){
         return distrib(gen);
     };
     grid.resize(n);
-    std::generate(grid.begin(), grid.end(), gen);
+    std::generate(grid.begin(), grid.end(), generator);
 }
 
 int Board::get_n() const{
