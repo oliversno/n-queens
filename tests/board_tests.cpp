@@ -8,6 +8,11 @@ TEST(BoardTests, InitRandom){
     SUCCEED();
 }
 
+TEST(BoardTests, InitNegative){
+    Board b(-1);
+    SUCCEED();
+}
+
 TEST(BoardTests, InitFromVector){
     std::vector<int> v{1,2,3};
     Board b(v);
