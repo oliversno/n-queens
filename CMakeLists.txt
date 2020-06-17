@@ -11,7 +11,8 @@ include_directories(${PROJECT_SOURCE_DIR})
 
 add_library(board src/board.cpp)
 add_library(chromosone src/chromosone.cpp)
-target_link_libraries(chromosone board cmath)
+target_link_libraries(chromosone m)
+#target_link_libraries(chromosone board)
 #add_executable(genetic src/genetic.cpp)
 #target_link_libraries(genetic chromosone)
 

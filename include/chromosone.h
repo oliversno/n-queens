@@ -2,7 +2,10 @@
 #define CHROMOSONE_H
 
 #include "board.h"
+#ifndef CHROMOSONE_H
+#define CHROMOSONE_H
 #include <vector>
+
 class chromosone{
     public:
         chromosone(Board board_in) : board(board_in) {}
