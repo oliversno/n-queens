@@ -10,6 +10,7 @@ class Board{
         int get_n() const;
         int at(int column_num) const;
         void swap(int pos1, int pos2);
+        void swap(Board& other, int pos);
 
         friend std::ostream &operator<<( std::ostream &output, const Board &B ){
             const int n = B.get_n();

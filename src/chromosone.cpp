@@ -28,6 +28,10 @@ void Board::swap(int pos1, int pos2){
     std::iter_swap(grid.begin()+pos1, grid.begin()+pos2);
 }
 
+void Board::swap(Board& other, int pos){
+    std::iter_swap(grid.begin()+pos, other.grid.begin()+pos);
+}
+
 int chromosone::calculateFitness() const{
     const int n = board.get_n();
     int fitness = nCk(n, 2); //find number of pairs with nC2
@@ -67,7 +71,7 @@ void chromosone::crossover(chromosone& other){
     std::uniform_int_distribution<int> distrib(1, n);
     int slicePoint = distrib(gen);
     for(int i = 0; i < slicePoint; ++i){
-        std::swap(board.at(i), other.board.at(i));
+        board.swap(other.board, i);
     }
 }
 
