@@ -63,7 +63,7 @@ void chromosone::Mutate(){
 }
 void chromosone::crossover(chromosone& other){
     if(board.get_n() != other.board.get_n()){
-        throw notSameNError();
+        throw notSameNExpception();
     }
     const int n = board.get_n();
     std::random_device rd;

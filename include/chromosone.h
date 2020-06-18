@@ -69,4 +69,9 @@ struct outOfBoundsException : public std::exception {
     }
 };
 
+struct notSameNExpception : public std::exception {
+    const char* what() const throw(){
+        return "Chromosones did not have same N for crossover";
+    }
+};
 #endif
