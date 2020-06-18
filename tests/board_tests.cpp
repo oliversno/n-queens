@@ -9,8 +9,7 @@ TEST(BoardTests, InitRandom){
 }
 
 TEST(BoardTests, InitNegative){
-    Board b(-1);
-    SUCCEED();
+    EXPECT_ANY_THROW(Board b(-1));
 }
 
 TEST(BoardTests, InitFromVector){

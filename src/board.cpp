@@ -1,6 +1,7 @@
 #include "include/board.h"
 #include <random>
 #include <algorithm>
+#include <limits>
 
 Board::Board(int n){
     std::random_device rd;
@@ -14,7 +15,7 @@ Board::Board(int n){
 }
 
 int Board::get_n() const{
-    if(grid.size() > INT_MAX){
+    if(grid.size() > std::numeric_limits<int>::max()){
         throw std::overflow_error("N is larger than INT_MAX");
     }
     return static_cast<int>(grid.size());
