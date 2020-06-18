@@ -33,10 +33,10 @@ if(BUILD_TESTS)
     
     enable_testing()
 
-    add_executable(test_board tests/board_tests.cpp)
+    add_executable(test_board tests/board_tests.cpp src/board.cpp)
     target_link_libraries(test_board gtest gtest_main)
 
-    add_executable(test_chromosone tests/chromosone_tests.cpp)
+    add_executable(test_chromosone tests/chromosone_tests.cpp src/chromosone.cpp)
     target_link_libraries(test_chromosone gtest gtest_main)
 
     add_test(TestBoard test_board)
