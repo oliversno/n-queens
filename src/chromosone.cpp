@@ -24,6 +24,10 @@ int Board::at(int column_num) const{
     return grid[column_num];
 }
 
+void Board::swap(int pos1, int pos2){
+    std::iter_swap(grid.begin()+pos1, grid.begin()+pos2);
+}
+
 int chromosone::calculateFitness() const{
     const int n = board.get_n();
     int fitness = nCk(n, 2); //find number of pairs with nC2
@@ -51,7 +55,7 @@ void chromosone::Mutate(){
     while(randOne == randTwo){
         randTwo = distrib(gen); // ensure two distinct numbers
     }
-    std::swap(board.at(randOne), board.at(randTwo));
+    board.swap(randOne, randTwo);
 }
 void chromosone::crossover(chromosone& other){
     if(board.get_n() != other.board.get_n()){
