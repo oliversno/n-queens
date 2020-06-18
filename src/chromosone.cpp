@@ -1,8 +1,28 @@
 #include "include/chromosone.h"
-#include <cmath>
 #include <random>
-#include <time.h>
 #include <algorithm>
+
+Board::Board(int n){
+    std::random_device rd;
+    std::mt19937 gen(rd());
+    std::uniform_int_distribution<int> distrib(1, n);
+    auto generator = [&distrib, &gen](){
+        return distrib(gen);
+    };
+    grid.resize(n);
+    std::generate(grid.begin(), grid.end(), generator);
+}
+
+int Board::get_n() const{
+    return grid.size();
+}
+
+int Board::at(int column_num) const{
+    if(column_num < 0 || column_num >= grid.size()){
+        throw outOfBoundsException();
+    }
+    return grid[column_num];
+}
 
 int chromosone::calculateFitness() const{
     const int n = board.get_n();
@@ -49,18 +69,4 @@ void chromosone::crossover(chromosone& other){
 
 const Board chromosone::get_board() const{
     return board;
-}
-
-//helpers
-int nCk(int n, int k){
-    if(k==0){ return 1; }
-    if(k > n / 2) { 
-        return nCk(n, n-k);
-    }
-    long res = 1;
-    for(int i = 1; i <= k; ++i){
-        res *= n - i + 1;
-        res /= i;
-    }
-    return res;
 }
