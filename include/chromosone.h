@@ -14,6 +14,7 @@ class chromosone{
 
         friend std::ostream &operator<<( std::ostream &output, const chromosone &C ){
             output << C.get_board();
+            return output;
         }
     private:
         Board board;
@@ -25,7 +26,7 @@ int nCk(int n, int k){
     if(k > n / 2) { 
         return nCk(n, n-k);
     }
-    long res = 1;
+    int res = 1;
     for(int i = 1; i <= k; ++i){
         res *= n - i + 1;
         res /= i;

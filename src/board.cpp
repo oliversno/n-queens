@@ -14,11 +14,14 @@ Board::Board(int n){
 }
 
 int Board::get_n() const{
-    return grid.size();
+    if(grid.size() > INT_MAX){
+        throw std::overflow_error("N is larger than INT_MAX");
+    }
+    return static_cast<int>(grid.size());
 }
 
 int Board::at(int column_num) const{
-    if(column_num < 0 || column_num >= grid.size()){
+    if(column_num < 0 || column_num >= get_n() ){
         throw outOfBoundsException();
     }
     return grid[column_num];
