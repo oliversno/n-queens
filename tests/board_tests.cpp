@@ -28,3 +28,21 @@ TEST(BoardTest, get_n_two){
     Board b(v);
     EXPECT_EQ(b.get_n(), 4);
 }
+
+TEST(BoardTest, at){
+    std::vector<int> v{2,3,4,1};
+    Board b(v);
+    EXPECT_EQ(b.at(2), 4);
+}
+
+TEST(BoardTest, at_negative){
+    std::vector<int> v{2,3,4,1};
+    Board b(v);
+    EXPECT_ANY_THROW(b.at(-2));
+}
+
+TEST(BoardTest, at_to0_great){
+    std::vector<int> v{2,3,4,1};
+    Board b(v);
+    EXPECT_ANY_THROW(b.at(10));
+}
