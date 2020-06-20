@@ -41,8 +41,34 @@ TEST(BoardTest, at_negative){
     EXPECT_ANY_THROW(b.at(-2));
 }
 
-TEST(BoardTest, at_to0_great){
+TEST(BoardTest, at_too_great){
     std::vector<int> v{2,3,4,1};
     Board b(v);
     EXPECT_ANY_THROW(b.at(10));
+}
+
+TEST(BoardTest, swap){
+    std::vector<int> v{1,2};
+    Board b{v};
+    EXPECT_EQ(1, b.at(0));
+    b.swap(0,1);
+    EXPECT_EQ(2, b.at(0));
+}
+
+TEST(BoardTest, swap_out_of_range){
+    std::vector<int> v{1,3,2};
+    Board b{v};
+    EXPECT_ANY_THROW(b.swap(-2,7));
+}
+
+TEST(BoardTest, swapOtherBoard){
+    std::vector<int> v1{1,2};
+    Board b1{v1};
+    std::vector<int> v2{2,1};
+    Board b2{v2};
+    b1.swap(b2, 0);
+    EXPECT_EQ(2, b1.at(0));
+    EXPECT_EQ(2, b1.at(1));
+    EXPECT_EQ(2, b2.at(0));
+    EXPECT_EQ(2, b2.at(1));
 }
