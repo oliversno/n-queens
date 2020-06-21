@@ -42,3 +42,10 @@ void Board::swap(Board& other, int pos){
     }
     std::iter_swap(grid.begin()+pos, other.grid.begin()+pos);
 }
+
+bool Board::operator==(const Board& other) const{
+    return grid == other.grid;
+}
+bool Board::operator!=(const Board& other) const{
+    return !(*this == other);
+}

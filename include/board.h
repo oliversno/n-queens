@@ -13,6 +13,9 @@ class Board{
         void swap(int pos1, int pos2);
         void swap(Board& other, int pos);
 
+        bool operator==(const Board& other) const;
+        bool operator!=(const Board& other) const;
+
         friend std::ostream &operator<<( std::ostream &output, const Board &B ){
             const int n = B.get_n();
             for(int column_num : B.grid){
