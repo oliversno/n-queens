@@ -69,6 +69,6 @@ TEST(BoardTest, swapOtherBoard){
     b1.swap(b2, 0);
     EXPECT_EQ(2, b1.at(0));
     EXPECT_EQ(2, b1.at(1));
-    EXPECT_EQ(2, b2.at(0));
-    EXPECT_EQ(2, b2.at(1));
+    EXPECT_EQ(1, b2.at(0));
+    EXPECT_EQ(1, b2.at(1));
 }
