@@ -4,7 +4,7 @@
 
 int chromosone::calculateFitness() const{
     const int n = board.get_n();
-    int fitness = nCk(n, 2); //find number of pairs with nC2
+    int fitness = chromosone::nCk(n, 2); //find number of pairs with nC2
     const int length = board.get_n();
     for(int i = 0; i < length; ++i){
         for(int j = i+1; i < length - 1; ++j){
