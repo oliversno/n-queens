@@ -11,8 +11,8 @@ include_directories(${PROJECT_SOURCE_DIR})
 
 add_library(board src/board.cpp)
 add_library(chromosone src/chromosone.cpp)
-#add_executable(genetic src/genetic.cpp)
-#target_link_libraries(genetic chromosone)
+add_executable(genetic src/genetic.cpp)
+target_link_libraries(genetic chromosone board)
 
 if(BUILD_TESTS)
     include_directories(${GTEST_INCLUDE_DIRS})

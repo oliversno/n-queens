@@ -32,12 +32,12 @@ void genetic_algorithm(vector<chromosone>& chromosones){
 int main(int argc, char** argv){
     if(argc != 4){
         cerr << "Incorrect number of arguments: ./genetic SIZE_OF_BOARD POPULATION_SIZE" <<
-            "NUMBER_OF_ROUNDS\n";
+            " NUMBER_OF_ROUNDS\n";
     }
     int n = atoi(argv[1]);
     int k = atoi(argv[2]);
     int num_rounds = atoi(argv[3]);
-    vector<chromosone> chromosones(k, chromosone( board(n) ));
+    vector<chromosone> chromosones(k, chromosone( Board(n) ));
     for_each(chromosones.begin(), chromosones.end(), [](chromosone& c){
         c.calculateFitness(); 
     });
