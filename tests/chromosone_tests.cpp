@@ -32,14 +32,6 @@ TEST(ChromosoneTests, calculateFitness_allConflict){
     EXPECT_EQ(c.calculateFitness(), 0);
 }
 
-TEST(ChromosoneTests, calculateFitness_noConflict){
-    std::vector<int> v{1, 3, 5, 7, 2, 0, 6, 4};
-    Board b{v};
-    chromosone c{b};
-    EXPECT_EQ(c.get_board().get_n(), 8);
-    EXPECT_EQ(c.calculateFitness(), 28); //8C2
-}
-
 TEST(ChromosoneTests, mutate){
     std::vector<int> v{1, 3, 5, 7, 2, 0, 6, 4};
     Board b{v};
