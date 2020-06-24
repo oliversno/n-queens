@@ -24,7 +24,7 @@ void genetic_algorithm(vector<chromosone>& chromosones){
         chromosones[i].crossover(chromosones[i+1]);
     }
     for(int i = 0; i < k; ++i){
-        chromosones[i].Mutate();
+        chromosones[i].mutate();
     }
 }
 
