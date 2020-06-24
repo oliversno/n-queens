@@ -18,7 +18,7 @@ int chromosone::calculateFitness() const{
     }
     return fitness;
 }
-void chromosone::Mutate(){
+void chromosone::mutate(){
     const int n = board.get_n();
     // seed rng
     std::random_device rd;
