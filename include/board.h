@@ -2,6 +2,7 @@
 #define BOARD_H
 
 #include <vector>
+#include <string>
 #include <iostream>
 
 class Board{
@@ -38,10 +39,26 @@ class Board{
 };
 
 // exceptions
-struct outOfBoundsException : public std::exception {
-    const char* what() const throw(){
-        return "Column was not a valid acsess";
-    }
+struct outOfBoundsException : public std::exception{
+    private:
+        const char* file;
+        int line;
+        const char* func;
+        const char* info;
+    public:
+        outOfBoundsException(const char* file_, int line_, const char* func_, const char* info_ = "") :
+        	file (file_),
+        	line (line_),
+        	func (func_),
+        	info (info_)
+            {
+            }
+        
+        const char* what() const noexcept {
+            static char res[100];
+            sprintf(res, "Out of Bounds Exception in %s:%i function %s. Info: acsess at index %s", file, line, func, info);
+            return res;
+        }
 };
 
 #endif
