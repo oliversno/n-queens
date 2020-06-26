@@ -1,17 +1,24 @@
 #include "include/chromosone.h"
 #include <random>
 #include <algorithm>
+#include <iostream>
 
 int chromosone::calculateFitness() const{
     const int n = board.get_n();
     int fitness = chromosone::nCk(n, 2); //find number of pairs with nC2
     for(int i = 0; i < n; ++i){
         for(int j = 0; i < n; ++j){
-            if(board.at(i) == board.at(j)){
-                --fitness; //subtract for attacking pair
+            try{
+                if(board.at(i) == board.at(j)){
+                    --fitness; //subtract for attacking pair
+                }
+                else if (abs(board.at(i) - board.at(j)) == abs(i-j)){
+                    --fitness;
+                }
             }
-            else if (abs(board.at(i) - board.at(j)) == abs(i-j)){
-                --fitness;
+            catch(std::exception& e){
+                std::cerr << "Exception caught in chromosone::calculateFitness() "
+                    << e.what();
             }
         }
     }
@@ -28,7 +35,13 @@ void chromosone::mutate(){
     while(randOne == randTwo){
         randTwo = distrib(gen); // ensure two distinct numbers
     }
-    board.swap(randOne, randTwo);
+    try{
+        board.swap(randOne, randTwo);
+    }
+    catch(std::exception& e){
+            std::cerr << "Exception caught in chromosone::mutate() "
+                << e.what();
+        }
 }
 void chromosone::crossover(chromosone& other){
     if(board.get_n() != other.board.get_n()){
@@ -40,7 +53,13 @@ void chromosone::crossover(chromosone& other){
     std::uniform_int_distribution<int> distrib(1, n);
     int slicePoint = distrib(gen);
     for(int i = 0; i < slicePoint; ++i){
-        board.swap(other.board, i);
+        try{
+            board.swap(other.board, i);
+        }
+        catch(std::exception& e){
+            std::cerr << "Exception caught in chromosone::crosover(chromosone&) "
+                << e.what();
+        }
     }
 }
 
