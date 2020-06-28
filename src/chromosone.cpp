@@ -2,6 +2,7 @@
 #include <random>
 #include <algorithm>
 #include <iostream>
+#include <stdlib.h>
 
 int chromosone::calculateFitness() const{
     const int n = board.get_n();
@@ -19,6 +20,7 @@ int chromosone::calculateFitness() const{
             catch(std::exception& e){
                 std::cerr << "Exception caught in chromosone::calculateFitness() "
                     << e.what();
+                exit(EXIT_FAILURE);
             }
         }
     }
@@ -41,6 +43,7 @@ void chromosone::mutate(){
     catch(std::exception& e){
             std::cerr << "Exception caught in chromosone::mutate() "
                 << e.what();
+            exit(EXIT_FAILURE);
         }
 }
 void chromosone::crossover(chromosone& other){
@@ -59,6 +62,7 @@ void chromosone::crossover(chromosone& other){
         catch(std::exception& e){
             std::cerr << "Exception caught in chromosone::crosover(chromosone&) "
                 << e.what();
+            exit(EXIT_FAILURE);
         }
     }
 }
