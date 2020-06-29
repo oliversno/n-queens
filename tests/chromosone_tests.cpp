@@ -8,12 +8,31 @@ TEST(ChromosoneTests, ctor){
     SUCCEED();
 }
 
+TEST(ChromosoneTests, nCk_0_groups){
+    EXPECT_EQ(chromosone::nCk(1,0), 1);
+    EXPECT_EQ(chromosone::nCk(5,0), 1);
+    EXPECT_EQ(chromosone::nCk(18,0), 1);
+}
+
+TEST(ChromosoneTests, nCk_1_group){
+    EXPECT_EQ(chromosone::nCk(1,1), 1);
+    EXPECT_EQ(chromosone::nCk(5,1), 5);
+    EXPECT_EQ(chromosone::nCk(18,1), 18);
+}
+
+TEST(ChromosoneTests, nCk_2_groups){
+    EXPECT_EQ(chromosone::nCk(7,2), 21);
+    EXPECT_EQ(chromosone::nCk(18,2), 153);
+    EXPECT_EQ(chromosone::nCk(4,2), 6);
+    EXPECT_EQ(chromosone::nCk(8,2), 28);
+}
+
 TEST(ChromosoneTests, calculateFitness_noConflict){
     std::vector<int> v{1, 3, 5, 7, 2, 0, 6, 4};
     Board b{v};
     chromosone c{b};
     EXPECT_EQ(c.get_board().get_n(), 8);
-    EXPECT_EQ(c.calculateFitness(), 28); //8C2
+    EXPECT_EQ(c.calculateFitness(), chromosone::nCk(8,2));
 }
 
 TEST(ChromosoneTests, calculateFitness_someConflict){
@@ -21,7 +40,7 @@ TEST(ChromosoneTests, calculateFitness_someConflict){
     Board b{v};
     chromosone c{b};
     EXPECT_EQ(c.get_board().get_n(), 4);
-    EXPECT_EQ(c.calculateFitness(), 4); //4C2 - 2
+    EXPECT_EQ(c.calculateFitness(), chromosone::nCk(4,2)-2);
 }
 
 TEST(ChromosoneTests, calculateFitness_allConflict){
