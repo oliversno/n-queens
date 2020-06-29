@@ -31,7 +31,7 @@ void chromosone::mutate(){
     // seed rng
     std::random_device rd;
     std::mt19937 gen(rd());
-    std::uniform_int_distribution<int> distrib(1, n);
+    std::uniform_int_distribution<int> distrib(0, n-1);
     int randOne = distrib(gen);
     int randTwo = distrib(gen);
     while(randOne == randTwo){
