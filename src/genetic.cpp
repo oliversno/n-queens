@@ -43,11 +43,11 @@ int main(int argc, char** argv){
     });
     for(int i = 0; i < num_rounds; ++i){
         cout << "Round " << i << '\n';
-        genetic_algorithm(chromosones);
         for(int j = 1; j <= k; ++j){
             cout << "Chromosone " << j << '\n';
             cout << "-------------------\n";
-            cout << chromosones[j] << '\n';
+            cout << chromosones[j-1] << '\n';
         }
+        genetic_algorithm(chromosones);
     }
 }
