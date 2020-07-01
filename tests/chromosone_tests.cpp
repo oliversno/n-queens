@@ -32,7 +32,8 @@ TEST(ChromosoneTests, calculateFitness_noConflict){
     Board b{v};
     chromosone c{b};
     EXPECT_EQ(c.get_board().get_n(), 8);
-    EXPECT_EQ(c.calculateFitness(), chromosone::nCk(8,2));
+    c.calculateFitness();
+    EXPECT_EQ(c.get_fitness(), chromosone::nCk(8,2));
 }
 
 TEST(ChromosoneTests, calculateFitness_someConflict){
@@ -40,7 +41,8 @@ TEST(ChromosoneTests, calculateFitness_someConflict){
     Board b{v};
     chromosone c{b};
     EXPECT_EQ(c.get_board().get_n(), 4);
-    EXPECT_EQ(c.calculateFitness(), chromosone::nCk(4,2)-2);
+    c.calculateFitness();
+    EXPECT_EQ(c.get_fitness(), chromosone::nCk(4,2)-2);
 }
 
 TEST(ChromosoneTests, calculateFitness_allConflict){
@@ -48,7 +50,8 @@ TEST(ChromosoneTests, calculateFitness_allConflict){
     Board b{v};
     chromosone c{b};
     EXPECT_EQ(c.get_board().get_n(), 3);
-    EXPECT_EQ(c.calculateFitness(), 0);
+    c.calculateFitness();
+    EXPECT_EQ(c.get_fitness(), 0);
 }
 
 TEST(ChromosoneTests, mutate){
