@@ -13,8 +13,7 @@ void genetic_algorithm(vector<chromosone>& chromosones){
     random_device rd;
     mt19937 gen(rd());
     discrete_distribution<int> distrib(fitness.begin(), fitness.end());
-    vector<chromosone> temp;
-    temp.reserve(k);
+    vector<chromosone> temp = chromosones;
     for(int i = 0; i < k; ++i){
         int num = distrib(gen);
         temp[i] = chromosones[num];
