@@ -9,7 +9,7 @@ void genetic_algorithm(vector<chromosone>& chromosones){
     vector<int> fitness;
     fitness.resize(k);
     transform(chromosones.begin(), chromosones.end(), fitness.begin(), 
-        [](const chromosone& c){ return c.calculateFitness(); } );
+        [](chromosone& c){ return c.get_fitness(); } );
     random_device rd;
     mt19937 gen(rd());
     discrete_distribution<int> distrib(fitness.begin(), fitness.end());
@@ -25,6 +25,10 @@ void genetic_algorithm(vector<chromosone>& chromosones){
     for(int i = 0; i < k; ++i){
         chromosones[i].mutate();
     }
+    // update fitness
+    for_each(chromosones.begin(), chromosones.end(), [](chromosone& c){
+        c.calculateFitness(); 
+    });
 }
 
 

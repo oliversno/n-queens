@@ -4,9 +4,9 @@
 #include <iostream>
 #include <stdlib.h>
 
-int chromosone::calculateFitness() const{
+void chromosone::calculateFitness(){
     const int n = board.get_n();
-    int fitness = chromosone::nCk(n, 2); //find number of pairs with nC2
+    fitness = chromosone::nCk(n, 2); //find number of pairs with nC2
     for(int i = 0; i < n; ++i){
         for(int j = i+1; j < n; ++j){
             try{
@@ -24,8 +24,12 @@ int chromosone::calculateFitness() const{
             }
         }
     }
+}
+
+int chromosone::get_fitness() const{
     return fitness;
 }
+
 void chromosone::mutate(){
     const int n = board.get_n();
     // seed rng

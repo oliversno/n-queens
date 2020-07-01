@@ -6,8 +6,9 @@
 
 class chromosone{
     public:
-        chromosone(Board board_in) : board(board_in) {}
-        int calculateFitness() const;
+        chromosone(Board board_in) : board(board_in), fitness(-1) {}
+        void calculateFitness();
+        int get_fitness() const;
         void mutate();
         void crossover(chromosone& other);
         const Board get_board() const;
@@ -27,10 +28,12 @@ class chromosone{
 
         friend std::ostream &operator<<( std::ostream &output, const chromosone &C ){
             output << C.get_board();
+            output << "Fitness: " << C.fitness << '\n';
             return output;
         }
     private:
         Board board;
+        int fitness;
 };
 
 //exceptions
