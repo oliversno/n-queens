@@ -40,7 +40,7 @@ int main(int argc, char** argv){
     for_each(chromosones.begin(), chromosones.end(), [](chromosone& c){
         c.calculateFitness(); 
     });
-    for(int i = 0; i < num_rounds; ++i){
+    for(int i = 0; i <= num_rounds; ++i){
         cout << "Round " << i << '\n';
         for(int j = 1; j <= k; ++j){
             cout << "Chromosone " << j << '\n';
