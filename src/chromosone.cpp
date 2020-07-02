@@ -30,25 +30,21 @@ int chromosone::get_fitness() const{
     return fitness;
 }
 
-void chromosone::mutate(){
+void chromosone::mutate(int mutation_prob){
     const int n = board.get_n();
     // seed rng
     std::random_device rd;
     std::mt19937 gen(rd());
-    std::uniform_int_distribution<int> distrib(0, n-1);
-    int randOne = distrib(gen);
-    int randTwo = distrib(gen);
-    while(randOne == randTwo){
-        randTwo = distrib(gen); // ensure two distinct numbers
-    }
-    try{
-        board.swap(randOne, randTwo);
-    }
-    catch(std::exception& e){
-            std::cerr << "Exception caught in chromosone::mutate() "
-                << e.what();
-            exit(EXIT_FAILURE);
+    std::uniform_int_distribution<int> probability_dist(0, 100);
+    std::uniform_int_distribution<int> position_distrib(0, n-1);
+    for(int i = 0; i < n; ++i){
+        int rand_num = probability_dist(gen);
+        if(mutation_prob <= rand_num){
+            int new_pos = position_distrib(gen);
+            
         }
+    }
+
 }
 void chromosone::crossover(chromosone& other){
     if(board.get_n() != other.board.get_n()){
