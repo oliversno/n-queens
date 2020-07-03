@@ -10,7 +10,8 @@ class Board{
         Board(std::vector<int> grid_in) : grid(grid_in) {}
         Board(int n);
         int get_n() const;
-        int at(int column_num) const;
+        int at(int row_num) const;
+        void set_queen(int row_num, int column_num);
         void swap(int pos1, int pos2);
         void swap(Board& other, int pos);
 
@@ -19,9 +20,9 @@ class Board{
 
         friend std::ostream &operator<<( std::ostream &output, const Board &B ){
             const int n = B.get_n();
-            for(int column_num : B.grid){
+            for(int row_num : B.grid){
                 for(int i = 0; i < n; ++i){
-                    if(i == column_num){
+                    if(i == row_num){
                         output << 'Q';
                     }
                     else{

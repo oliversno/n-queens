@@ -23,11 +23,18 @@ int Board::get_n() const{
     return n;
 }
 
-int Board::at(int column_num) const{
-    if(column_num < 0 || column_num >= get_n() ){
-        throw outOfBoundsException("board.cpp", 27, "at(int)", std::to_string(column_num).c_str());
+int Board::at(int row_num) const{
+    if(row_num < 0 || row_num >= get_n() ){
+        throw outOfBoundsException("board.cpp", 27, "at(int)", std::to_string(row_num).c_str());
     }
-    return grid[column_num];
+    return grid[row_num];
+}
+
+void Board::set_queen(int row_num, int column_num){
+    grid[row_num] = column_num;
+    if(row_num < 0 || row_num >= get_n() ){
+        throw outOfBoundsException("board.cpp", 27, "set_queen(int, int)", std::to_string(row_num).c_str());
+    }
 }
 
 void Board::swap(int pos1, int pos2){

@@ -41,7 +41,14 @@ void chromosone::mutate(int mutation_prob){
         int rand_num = probability_dist(gen);
         if(mutation_prob <= rand_num){
             int new_pos = position_distrib(gen);
-            
+            try{
+                board.set_queen(i, new_pos);
+            }
+            catch(std::exception& e){
+                std::cerr << "Exception caught in chromosone::mutate(int) "
+                    << e.what();
+                exit(EXIT_FAILURE);
+            }
         }
     }
 
