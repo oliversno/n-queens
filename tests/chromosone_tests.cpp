@@ -58,7 +58,7 @@ TEST(ChromosoneTests, mutate){
     std::vector<int> v{1, 3, 5, 7, 2, 0, 6, 4};
     Board b{v};
     chromosone c{b};
-    c.mutate(1);
+    c.mutate(100);
     EXPECT_NE(b, c.get_board());
 }
 
