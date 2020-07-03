@@ -23,7 +23,7 @@ void genetic_algorithm(vector<chromosone>& chromosones){
         chromosones[i].crossover(chromosones[i+1]);
     }
     for(int i = 0; i < k; ++i){
-        chromosones[i].mutate(1);
+        chromosones[i].mutate(10);
     }
     // update fitness
     for_each(chromosones.begin(), chromosones.end(), [](chromosone& c){

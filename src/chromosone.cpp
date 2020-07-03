@@ -35,11 +35,11 @@ void chromosone::mutate(int mutation_prob){
     // seed rng
     std::random_device rd;
     std::mt19937 gen(rd());
-    std::uniform_int_distribution<int> probability_dist(0, 100);
+    std::uniform_int_distribution<int> probability_distrib(0, 100);
     std::uniform_int_distribution<int> position_distrib(0, n-1);
     for(int i = 0; i < n; ++i){
-        int rand_num = probability_dist(gen);
-        if(mutation_prob <= rand_num){
+        int rand_num = probability_distrib(gen);
+        if(rand_num <= mutation_prob){
             int new_pos = position_distrib(gen);
             try{
                 board.set_queen(i, new_pos);
