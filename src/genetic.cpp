@@ -6,7 +6,7 @@ using namespace std;
 
 void genetic_algorithm(vector<chromosone>& chromosones){
     const int k = chromosones.size();
-    vector<int> fitness;
+    vector<double> fitness;
     fitness.resize(k);
     transform(chromosones.begin(), chromosones.end(), fitness.begin(), 
         [](chromosone& c){ return c.get_fitness(); } );
