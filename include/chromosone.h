@@ -8,7 +8,7 @@ class chromosone{
     public:
         chromosone(Board board_in) : board(board_in), fitness(-1) {}
         void calculateFitness();
-        int get_fitness() const;
+        double get_fitness() const;
         void mutate(int mutation_prob);
         void crossover(chromosone& other);
         const Board get_board() const;
@@ -33,7 +33,7 @@ class chromosone{
         }
     private:
         Board board;
-        int fitness;
+        double fitness;
 };
 
 //exceptions

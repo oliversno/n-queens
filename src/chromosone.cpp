@@ -6,15 +6,15 @@
 
 void chromosone::calculateFitness(){
     const int n = board.get_n();
-    fitness = chromosone::nCk(n, 2); //find number of pairs with nC2
+    int num_threats = 0; // max nC2
     for(int i = 0; i < n; ++i){
         for(int j = i+1; j < n; ++j){
             try{
                 if(board.at(i) == board.at(j)){
-                    --fitness; //subtract for attacking pair
+                    ++num_threats;
                 }
                 else if (abs(board.at(i) - board.at(j)) == abs(i-j)){
-                    --fitness;
+                    ++num_threats;
                 }
             }
             catch(std::exception& e){
@@ -24,9 +24,10 @@ void chromosone::calculateFitness(){
             }
         }
     }
+    fitness = 1.0/(1.0+num_threats);
 }
 
-int chromosone::get_fitness() const{
+double chromosone::get_fitness() const{
     return fitness;
 }
 

@@ -12,7 +12,8 @@ void genetic_algorithm(vector<chromosone>& chromosones){
         [](chromosone& c){ return c.get_fitness(); } );
     random_device rd;
     mt19937 gen(rd());
-    discrete_distribution<int> distrib(fitness.begin(), fitness.end());
+    discrete_distribution<int> distrib(fitness.begin(), fitness.end()); // lookinto this
+    // could be why fitness goes down
     vector<chromosone> temp = chromosones;
     for(int i = 0; i < k; ++i){
         int num = distrib(gen);
