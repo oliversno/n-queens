@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.1)
+cmake_minimum_required(VERSION 3.10)
 
 project(N-Queens)
 
@@ -13,6 +13,15 @@ add_library(board src/board.cpp)
 add_library(chromosone src/chromosone.cpp)
 add_executable(genetic src/genetic.cpp)
 target_link_libraries(genetic chromosone board)
+
+find_package(PythonLibs 2.7)
+target_include_directories(genetic PRIVATE ${PYTHON_INCLUDE_DIRS})
+target_link_libraries(genetic ${PYTHON_LIBRARIES})
+
+target_include_directories(genetic
+    PRIVATE
+    matplotlibcpp/matplotlibcpp.h
+)
 
 if(BUILD_TESTS)
     include_directories(${GTEST_INCLUDE_DIRS})

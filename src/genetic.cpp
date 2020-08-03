@@ -2,6 +2,8 @@
 #include <iostream>
 #include <algorithm>
 #include <random>
+#include <cmath>
+#include "matplotlib-cpp/matplotlibcpp.h"
 using namespace std;
 
 void genetic_algorithm(vector<chromosone>& chromosones){
