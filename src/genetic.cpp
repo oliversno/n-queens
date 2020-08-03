@@ -5,6 +5,12 @@
 #include <cmath>
 #include "matplotlib-cpp/matplotlibcpp.h"
 using namespace std;
+namespace plt = matplotlibcpp;
+
+void test_plot(){
+    plt::plot({1,3,2,4});
+    plt::show();
+}
 
 void genetic_algorithm(vector<chromosone>& chromosones){
     const int k = chromosones.size();
@@ -36,6 +42,7 @@ void genetic_algorithm(vector<chromosone>& chromosones){
 
 
 int main(int argc, char** argv){
+    test_plot();
     if(argc != 4){
         cerr << "Incorrect number of arguments: ./genetic SIZE_OF_BOARD POPULATION_SIZE" <<
             " NUMBER_OF_ROUNDS\n";
