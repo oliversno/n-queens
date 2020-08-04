@@ -7,11 +7,6 @@
 using namespace std;
 namespace plt = matplotlibcpp;
 
-void test_plot(){
-    plt::plot({1,3,2,4});
-    plt::show();
-}
-
 void genetic_algorithm(vector<chromosone>& chromosones){
     const int k = chromosones.size();
     vector<double> fitness;
@@ -42,7 +37,6 @@ void genetic_algorithm(vector<chromosone>& chromosones){
 
 
 int main(int argc, char** argv){
-    test_plot();
     if(argc != 4){
         cerr << "Incorrect number of arguments: ./genetic SIZE_OF_BOARD POPULATION_SIZE" <<
             " NUMBER_OF_ROUNDS\n";
@@ -54,13 +48,21 @@ int main(int argc, char** argv){
     for_each(chromosones.begin(), chromosones.end(), [](chromosone& c){
         c.calculateFitness(); 
     });
+    vector<double> total_fitness;
+    total_fitness.reserve(num_rounds);
     for(int i = 0; i <= num_rounds; ++i){
         cout << "Round " << i << '\n';
+        vector<double> fitness;
+        fitness.reserve(k);
         for(int j = 1; j <= k; ++j){
             cout << "Chromosone " << j << '\n';
             cout << "-------------------\n";
             cout << chromosones[j-1] << '\n';
+            fitness.push_back(chromosones[j-1].get_fitness());
         }
+        total_fitness.push_back(accumulate(fitness.begin(), fitness.end(), 0.0) / fitness.size());
         genetic_algorithm(chromosones);
     }
+    plt::plot(total_fitness);
+    plt::show();
 }
