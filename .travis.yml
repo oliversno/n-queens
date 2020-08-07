@@ -27,6 +27,7 @@ env:
     - CXXFLAGS="-Wall -Wextra -pedantic -Wconversion"
 before_install:
   - pip install --user cpp-coveralls
+  - pip install numpy
   - eval "${MATRIX_EVAL}"
   - which $CC
   - which $CXX
