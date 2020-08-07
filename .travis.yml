@@ -28,6 +28,7 @@ env:
 before_install:
   - pip install --user cpp-coveralls
   - pip install numpy
+  - export CFLAGS="-I /usr/local/lib/python2.7/dist-packages/numpy/core/include $CFLAGS"
   - eval "${MATRIX_EVAL}"
   - which $CC
   - which $CXX
