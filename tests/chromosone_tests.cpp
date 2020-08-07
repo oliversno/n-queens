@@ -33,16 +33,16 @@ TEST(ChromosoneTests, calculateFitness_noConflict){
     chromosone c{b, 1000, 100};
     EXPECT_EQ(c.get_board().get_n(), 8);
     c.calculateFitness();
-    EXPECT_EQ(c.get_fitness(), chromosone::nCk(8,2));
+    EXPECT_EQ(c.get_fitness(), 1);
 }
 
 TEST(ChromosoneTests, calculateFitness_someConflict){
-    std::vector<int> v{0, 2, 1, 3};
+    std::vector<int> v{0, 2, 1, 3}; // 2 threats
     Board b{v};
     chromosone c{b, 1000, 100};
     EXPECT_EQ(c.get_board().get_n(), 4);
     c.calculateFitness();
-    EXPECT_EQ(c.get_fitness(), chromosone::nCk(4,2)-2);
+    EXPECT_EQ(c.get_fitness(), 1.0/3.0);
 }
 
 TEST(ChromosoneTests, calculateFitness_allConflict){
@@ -51,7 +51,7 @@ TEST(ChromosoneTests, calculateFitness_allConflict){
     chromosone c{b, 1000, 100};
     EXPECT_EQ(c.get_board().get_n(), 3);
     c.calculateFitness();
-    EXPECT_EQ(c.get_fitness(), 0);
+    EXPECT_EQ(c.get_fitness(), 1.0/(1+c.get_board().get_n()));
 }
 
 TEST(ChromosoneTests, mutate){
