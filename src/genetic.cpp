@@ -58,9 +58,13 @@ int main(int argc, char** argv){
             cout << "Chromosone " << j << '\n';
             cout << "-------------------\n";
             cout << chromosones[j-1] << '\n';
+            if(chromosones[j-1].get_fitness() == 1.0){
+                cout << "Solution Found" << '\n';
+                return 0;
+            }
             fitness.push_back(chromosones[j-1].get_fitness());
         }
-        total_fitness.push_back(max_element(fitness,begin(), fitness.end()));
+        total_fitness.push_back(*max_element(fitness.begin(), fitness.end()));
         genetic_algorithm(chromosones);
     }
     plt::plot(total_fitness);
