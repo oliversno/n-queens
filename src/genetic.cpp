@@ -44,7 +44,9 @@ int main(int argc, char** argv){
     int n = atoi(argv[1]);
     int k = atoi(argv[2]);
     int num_rounds = atoi(argv[3]);
-    vector<chromosone> chromosones(k, chromosone( Board(n) ));
+    const int K_MutationRate = 50; // 0.05
+    const int K_CrossoverRate = 70; // 0.7
+    vector<chromosone> chromosones(k, chromosone( Board(n), K_MutationRate, K_CrossoverRate ));
     for_each(chromosones.begin(), chromosones.end(), [](chromosone& c){
         c.calculateFitness(); 
     });
