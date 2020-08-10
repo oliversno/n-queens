@@ -97,3 +97,10 @@ TEST(BoardTests, getConflictRow){
     std::vector<int> res {1, 2, 1, 3, 2, 1, 2, 2};
     EXPECT_EQ(b.get_conflicts(7), res);
 }
+
+TEST(BoardTests, getConflictRow2){
+    std::vector<int> v {6, 3, 1, 4, 7, 5, 2, 5};
+    Board b{v};
+    std::vector<int> res {0, 3, 2, 3, 2, 1, 3, 3};
+    EXPECT_EQ(b.get_conflicts(5), res);
+}
