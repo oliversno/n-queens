@@ -54,6 +54,39 @@ void Board::swap(Board& other, int pos){
     std::iter_swap(grid.begin()+pos, other.grid.begin()+pos);
 }
 
+int Board::get_conflicts() const{
+    const int n = get_n();
+    int conflicts = 0;
+    for(int i = 0; i < n; i++){
+        for(int j = i+1; j < n; j++){
+            try{
+                if(j != i && (at(j) == at(i) || abs(at(i) - at(j)) == abs(i-j))){
+                    ++conflicts;
+                }
+            }
+            catch(std::exception& e){
+                std::cerr << "Exception caught in board::get_conflicts() "
+                    << e.what();
+                exit(EXIT_FAILURE);
+            }
+        }
+    }
+    return conflicts;
+}
+
+std::vector<int> Board::get_conflicts(int row) const{
+    const int n = get_n();
+    std::vector<int> res(n, 0);
+    for(int i = 0; i < n; i++){
+        for(int j = 0; j < n; j++){
+            if(j != i && (at(j) == i || abs(at(i) - at(j)) == abs(i-j))){
+                res[i]++;
+            }
+        }
+    }
+    return res;
+}
+
 bool Board::operator==(const Board& other) const{
     return grid == other.grid;
 }

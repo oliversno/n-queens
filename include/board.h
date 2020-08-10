@@ -14,6 +14,8 @@ class Board{
         void set_queen(int row_num, int column_num);
         void swap(int pos1, int pos2);
         void swap(Board& other, int pos);
+        int get_conflicts() const;
+        std::vector<int> get_conflicts(int row) const;
 
         bool operator==(const Board& other) const;
         bool operator!=(const Board& other) const;

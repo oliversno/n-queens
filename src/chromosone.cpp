@@ -5,25 +5,7 @@
 #include <stdlib.h>
 
 void chromosone::calculateFitness(){
-    const int n = board.get_n();
-    int num_threats = 0; // max nC2
-    for(int i = 0; i < n; ++i){
-        for(int j = i+1; j < n; ++j){
-            try{
-                if(board.at(i) == board.at(j)){
-                    ++num_threats;
-                }
-                else if (abs(board.at(i) - board.at(j)) == abs(i-j)){
-                    ++num_threats;
-                }
-            }
-            catch(std::exception& e){
-                std::cerr << "Exception caught in chromosone::calculateFitness() "
-                    << e.what();
-                exit(EXIT_FAILURE);
-            }
-        }
-    }
+    int num_threats = board.get_conflicts(); // max nC2
     fitness = 1.0/(1.0+num_threats);
 }
 
