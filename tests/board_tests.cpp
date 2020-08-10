@@ -88,12 +88,12 @@ TEST(BoardTests, someConflict){
 TEST(BoardTests, allConflict){
     std::vector<int> v{1, 1, 1};
     Board b{v};
-    EXPECT_EQ(b.get_conflicts(), 2);
+    EXPECT_EQ(b.get_conflicts(), 3);
 }
 
 TEST(BoardTests, getConflictRow){
     std::vector<int> v {6, 3, 1, 4, 7, 5, 2, 0};
     Board b{v};
-    std::vector<int> res {0, 2, 1, 3, 2, 1, 2, 2};
+    std::vector<int> res {1, 2, 1, 3, 2, 1, 2, 2};
     EXPECT_EQ(b.get_conflicts(7), res);
 }

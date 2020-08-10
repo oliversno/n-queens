@@ -60,7 +60,7 @@ int Board::get_conflicts() const{
     for(int i = 0; i < n; i++){
         for(int j = i+1; j < n; j++){
             try{
-                if(j != i && (at(j) == at(i) || abs(at(i) - at(j)) == abs(i-j))){
+                if(at(j) == at(i) || abs(at(i) - at(j)) == abs(i-j)){
                     ++conflicts;
                 }
             }
@@ -79,7 +79,7 @@ std::vector<int> Board::get_conflicts(int row) const{
     std::vector<int> res(n, 0);
     for(int i = 0; i < n; i++){
         for(int j = 0; j < n; j++){
-            if(j != i && (at(j) == i || abs(at(i) - at(j)) == abs(i-j))){
+            if(j != row && (at(j) == i || abs(i - at(j)) == abs(row-j))){
                 res[i]++;
             }
         }
