@@ -72,3 +72,28 @@ TEST(BoardTest, swapOtherBoard){
     EXPECT_EQ(1, b2.at(0));
     EXPECT_EQ(1, b2.at(1));
 }
+
+TEST(BoardTests, noConflict){
+    std::vector<int> v{1, 3, 5, 7, 2, 0, 6, 4};
+    Board b{v};
+    EXPECT_EQ(b.get_conflicts(), 0);
+}
+
+TEST(BoardTests, someConflict){
+    std::vector<int> v{0, 2, 1, 3}; // 2 threats
+    Board b{v};
+    EXPECT_EQ(b.get_conflicts(), 2);
+}
+
+TEST(BoardTests, allConflict){
+    std::vector<int> v{1, 1, 1};
+    Board b{v};
+    EXPECT_EQ(b.get_conflicts(), 2);
+}
+
+TEST(BoardTests, getConflictRow){
+    std::vector<int> v {6, 3, 1, 4, 7, 5, 2, 0};
+    Board b{v};
+    std::vector<int> res {0, 2, 1, 3, 2, 1, 2, 2};
+    EXPECT_EQ(b.get_conflicts(7), res);
+}
