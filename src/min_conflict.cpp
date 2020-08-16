@@ -24,7 +24,7 @@ int min_conflict(Board& board, int max_steps){
 
 int main(int argv, char **argc){
     if(argv != 3){
-        cerr << "Incorrect number of arguments: ./genetic SIZE_OF_BOARD MAX_STEPS\n";
+        cerr << "Incorrect number of arguments: ./min_conflict SIZE_OF_BOARD MAX_STEPS\n";
     }
     int n = atoi(argc[1]);
     int max_steps = atoi(argc[2]);
