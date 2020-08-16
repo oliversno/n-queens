@@ -37,6 +37,13 @@ void Board::set_queen(int row_num, int column_num){
     }
 }
 
+void Board::remove_queen(int row_num, int column_num){
+    grid[row_num] = NULL;
+        if(row_num < 0 || row_num >= get_n() ){
+        throw outOfBoundsException("board.cpp", 27, "remove_queen(int, int)", std::to_string(row_num).c_str());
+    }
+}
+
 void Board::swap(int pos1, int pos2){
     if(pos1 < 0 || pos1 >= get_n()){
         throw outOfBoundsException("board.cpp", 34, "swap(int, int)", std::to_string(pos1).c_str());

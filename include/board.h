@@ -12,6 +12,7 @@ class Board{
         int get_n() const;
         int at(int row_num) const;
         void set_queen(int row_num, int column_num);
+        void remove_queen(int row_num, int column_num)
         void swap(int pos1, int pos2);
         void swap(Board& other, int pos);
         int get_conflicts() const;
