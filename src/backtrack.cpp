@@ -47,7 +47,7 @@ int main(int argv, char **argc){
     Board board{n};
     board.clear();
     if(backtrack(board)){
-        cout <<"Solution Found:\n";
+        cout <<"Solution Found\n";
     }
     else{
         cout << "No Solution Exists for N=" << n << '\n';
