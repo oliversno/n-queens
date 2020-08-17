@@ -8,8 +8,8 @@ using namespace std;
 bool is_safe(const Board& board, int row, int col){
     const int n = board.get_n();
     // left hand side
-    for(int i = 0; i < n; ++i){
-        if(board.at(i) == col || board.at(i) == abs(col-i)){
+    for(int i = 0; i < row; ++i){
+        if(board.at(i) == col || abs(col-board.at(i)) == abs(row-i)){
             return false;
         }
     }
@@ -48,7 +48,6 @@ int main(int argv, char **argc){
     board.clear();
     if(backtrack(board)){
         cout <<"Solution Found:\n";
-        cout << board; 
     }
     else{
         cout << "No Solution Exists for N=" << n << '\n';
