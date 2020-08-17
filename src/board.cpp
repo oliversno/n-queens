@@ -94,6 +94,13 @@ std::vector<int> Board::get_conflicts(int row) const{
     return res;
 }
 
+void Board::clear(){
+    const int n = get_n();
+    for(int i = 0; i < n; ++i){
+        remove_queen(i);
+    }
+}
+
 bool Board::operator==(const Board& other) const{
     return grid == other.grid;
 }

@@ -15,6 +15,8 @@ add_executable(genetic src/genetic.cpp)
 target_link_libraries(genetic chromosone board)
 add_executable(min_conflict src/min_conflict.cpp)
 target_link_libraries(min_conflict board)
+add_executable(backtrack src/backtrack.cpp)
+target_link_libraries(backtrack board)
 
 find_package(PythonLibs 2.7)
 target_include_directories(genetic PRIVATE ${PYTHON_INCLUDE_DIRS})

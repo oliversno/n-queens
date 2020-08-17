@@ -12,11 +12,12 @@ class Board{
         int get_n() const;
         int at(int row_num) const;
         void set_queen(int row_num, int column_num);
-        void remove_queen(int row_num)
+        void remove_queen(int row_num);
         void swap(int pos1, int pos2);
         void swap(Board& other, int pos);
         int get_conflicts() const;
         std::vector<int> get_conflicts(int row) const;
+        void clear();
 
         bool operator==(const Board& other) const;
         bool operator!=(const Board& other) const;

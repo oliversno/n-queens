@@ -17,6 +17,8 @@ bool is_safe(const Board& board, int row, int col){
 }
 
 bool backtrack_util(Board board, int col){
+    cout << "Trying col=" << col << '\n';
+    cout << board;
     const int n = board.get_n();
     if(col >= n){
         return true;
