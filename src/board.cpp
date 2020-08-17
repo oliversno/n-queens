@@ -38,7 +38,7 @@ void Board::set_queen(int row_num, int column_num){
 }
 
 void Board::remove_queen(int row_num){
-    grid[row_num] = NULL;
+    grid[row_num] = -1;
         if(row_num < 0 || row_num >= get_n() ){
         throw outOfBoundsException("board.cpp", 27, "remove_queen(int, int)", std::to_string(row_num).c_str());
     }

@@ -24,8 +24,8 @@ bool backtrack_util(Board board, int col){
         return true;
     }
     for(int i = 0; i < n; ++i){
-        if(is_safe(board, i, col)){
-            board.set_queen(i, col);
+        if(is_safe(board, col, i)){
+            board.set_queen(col, i);
             if(backtrack_util(board, col + 1)){
                 return true;
             }
@@ -45,6 +45,7 @@ int main(int argv, char **argc){
     }
     int n = atoi(argc[1]);
     Board board{n};
+    board.clear();
     if(backtrack(board)){
         cout <<"Solution Found:\n";
         cout << board; 
